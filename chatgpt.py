@@ -4,6 +4,8 @@ import re
 
 df = pd.read_csv('survey.csv')
 
+
+
 #Bar Chart --------------------------------------------------------------------------------------------------------------------
 
 barChartCols = {  
@@ -53,23 +55,26 @@ for i in multiBarChartCols:
 
 #Pie Charts -------------------------------------------------------------------------------------------------------------------
 
-plt.subplots_adjust(left=0.27, bottom=0.2, right=0.73, top=0.8)
-
 pieChart = ['Gender', 'What is your ethnicity?', 'Did either of your parents/legal guardian attend college/university?', 'What area of study are you in?','Have you used ChatGPT before?','Do you believe that ChatGPT is beneficial to students? ','Do you think ChatGPT is plagiarism in and of itself?', 'Would the use of AI tools such as ChatGPT inhibit education?']
 
 for i in pieChart:
     entry = df[i].value_counts()
 
     fig, ax = plt.subplots()
-    wedges, texts, autotexts = ax.pie(entry, autopct="%1.1f%%", startangle=90, colors=['#232133', '#4a2f51', '#7c3962', '#b04363', '#dc5656', '#000000'], textprops={"color": "white"})
+    wedges, texts, autotexts = ax.pie(entry, autopct="%1.1f%%", startangle=90, colors=['#232133', '#4a2f51', '#7c3962', '#b04363', '#dc5656', '#000000'] , textprops={"color": "white"})
     
     ax.axis("equal")  
     
-    legend = ax.legend(wedges, entry.index, title=i, loc="center left", bbox_to_anchor=(.5, 1))
+    legend = ax.legend(wedges, entry.index, bbox_to_anchor=(.18, 0.1), loc="lower right", ncol=1, fontsize=12)
+    # legend = ax.legend(wedges, entry.index, title=i, bbox_to_anchor=(.26, 0.1), loc="lower right", ncol=1)
 
-    plt.title(i, y=1.05)
+    plt.title(i, y=1.05, fontdict={'fontsize': 16, 'fontweight': 'bold'})
+
+    fig = plt.gcf()
+    fig.set_size_inches(12, 11)
     
     filename = re.sub('[^\w\-_\. ]', '', i)
     plt.savefig(f"output/{filename}.png")
+
 
     
