@@ -22,7 +22,7 @@ for i,j in barChartCols.items():
     temp1 = df[i].value_counts().sort_index()
     #plots the bar chart while settings its title, x and y labels, color  
     temp1.plot(kind='bar', color='black', legend=None, title=i, xlabel="", ylabel="count")
-    #Since the columns name may contain special characters, this will reromve themn and replace them with an nothing 
+    #Since the columns name may contain special characters, this will reromve themn and replace them with nothing 
     filename = re.sub('[^\w\-_\. ]', '', j)
     #Saves the chart as a .png in the folder output
     plt.savefig(f"output/{filename}.png")
@@ -55,7 +55,7 @@ for i in multiBarChartCols:
     else:
         plt.title(i)
 
-    #Since the columns name may contain special characters, this will remove themn and replace them with an nothing 
+    #Since the columns name may contain special characters, this will remove themn and replace them with nothing 
     filename = re.sub('[^\w\-_\. ]', '', i)
 
     #Adjust the spacing of the bar chart to fit the chart
