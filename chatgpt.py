@@ -61,14 +61,14 @@ for i in pieChart:
     entry = df[i].value_counts()
 
     fig, ax = plt.subplots()
-    wedges, texts, autotexts = ax.pie(entry, autopct="%1.1f%%", startangle=90, colors=['#232133', '#4a2f51', '#7c3962', '#b04363', '#dc5656', '#000000'] , textprops={"color": "white"})
+    wedges, texts, autotexts = ax.pie(entry, autopct="%1.1f%%", startangle=90, colors=['#232133', '#4a2f51', '#7c3962', '#b04363', '#dc5656', '#000000'] , textprops={"color": "white", "fontsize": 16})
     
     ax.axis("equal")  
     
     legend = ax.legend(wedges, entry.index, bbox_to_anchor=(.18, 0.1), loc="lower right", ncol=1, fontsize=12)
     # legend = ax.legend(wedges, entry.index, title=i, bbox_to_anchor=(.26, 0.1), loc="lower right", ncol=1)
 
-    plt.title(i, y=1.05, fontdict={'fontsize': 16, 'fontweight': 'bold'})
+    plt.title(i, y=1.05, fontdict={'fontsize': 18, 'fontweight': 'bold'})
 
     fig = plt.gcf()
     fig.set_size_inches(12, 11)
